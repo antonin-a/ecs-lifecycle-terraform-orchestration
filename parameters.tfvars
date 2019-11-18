@@ -1,0 +1,9 @@
+key_pair          = "your-keypair"
+instance_name     = "ecs-name"
+flavor_name       = "flavor-name"
+availability_zone = "eu-west-0a"
+network_id        = "your-network-id"
+subnet_id         = "your-subnet-id"
+security_groups = ["your-sec-group-id"]
+system_disks = ["first-system-disk-id","second-system-disk-id"]
+data_disks = ["irst-data-disk-id","second-data-disk-id"]
