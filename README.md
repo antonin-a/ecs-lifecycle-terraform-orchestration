@@ -11,7 +11,6 @@ The goal of this project is to allow users to orchestrate their Flexible Engine 
 
 ## Prerequisites
 ---------------------
-
 In order to create the instances, this plan require the following FE ressources:
 - A comlete VPC with a subnet
 - An existing keypair
@@ -25,53 +24,43 @@ In order to create the instances, this plan require the following FE ressources:
 2. Detach system and data disk(s)
 3. Delete ECS(s)
 4. Add your system and data disks uuid to your .tfvars file
-
-```
-system_disks = ["first-system-disk-id","second-system-disk-id","..."]
-data_disks = ["irst-data-disk-id","second-data-disk-id","..."]
-```
-
+  ```
+  system_disks = ["first-system-disk-id","second-system-disk-id","..."]
+  data_disks = ["irst-data-disk-id","second-data-disk-id","..."]
+  ```
 ## Quick Start
-
 ### Initialisation
 - Clone this repository
 - Edit the FE.rc file with your own credentials/parameters
 - Source the FE.rc file
-```
-source FE.rc
-```
+  `  source FE.rc`
 - Copy the parameters.tfvars to a .auto.tfvars file (this file will be automatically used when performing terraform plan/apply)
-```
-cp parameters.tfvars my-parameters.auto.tfvars
-```
+  `cp parameters.tfvars my-parameters.auto.tfvars`
 - Edit your .auto.tfvars file with your own parameters values
 - Terraform Initialisation
-```
-terraform init
-```
+  `terraform init`
+
 ### Deployment
-```
-terraform plan  
-terraform apply
-```
+  ```
+  terraform plan  
+  terraform apply
+  ```
 
 ### (Optional) Use Flexible Engine Object Storage (OBS) to store your .tfstafe files
+  ```
+  terraform {
 
-```
-terraform {
-
-  backend "s3" {
-    bucket = "your-bucket-name"
-    key    = "your-terraform-plan-name"
-    region = "eu-west-0"
-    endpoint = "https://oss.eu-west-0.prod-cloud-ocb.orange-business.com"
-    skip_region_validation      = true
-    skip_credentials_validation = true
+    backend "s3" {
+      bucket = "your-bucket-name"
+      key    = "your-terraform-plan-name"
+      region = "eu-west-0"
+      endpoint = "https://oss.eu-west-0.prod-cloud-ocb.orange-business.com"
+      skip_region_validation      = true
+      skip_credentials_validation = true
+    }
   }
-}
-```
+  ```
 
 ## Limitations
-
 - ECS creation should be perform on the same AZ as existing EVS (you can't create an ECS on AZa with EVS on AZb)
 - Data disk are not automatically mounted at OS level (WIP)
