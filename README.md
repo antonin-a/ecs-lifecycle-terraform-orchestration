@@ -1,15 +1,15 @@
-#ECS Lifecycle orchestration using Terraform
+# ECS Lifecycle orchestration using Terraform
 ============================
 
 The goal of this project is to allow users to orchestrate their Flexible Engine Cloud ECS lifecylce using Terraform. This plan can be executed as a cron job in order to create/delete ECS automatically with persistent data/volumes.
 
-##Requirements
+## Requirements
 ------------
 
 -	[Terraform](https://www.terraform.io/downloads.html) 0.12+
 
 
-##Prerequisites
+## Prerequisites
 ---------------------
 
 In order to create the instances, this plan require the following FE ressources:
@@ -19,10 +19,10 @@ In order to create the instances, this plan require the following FE ressources:
 - An existing bootable system disk
 - An existing data disk (can be removed)
 
-##How to orchestrate existing ECS(s)
+## How to orchestrate existing ECS(s)
 ---------------------
 1. Stop the existing ECS(s)
-2. Datach system and data disk(s)
+2. Detach system and data disk(s)
 3. Delete ECS(s)
 4. Add your system and data disks uuid to your .tfvars file
 
@@ -49,7 +49,7 @@ cp parameters.tfvars my-parameters.auto.tfvars
 ```
 terraform init
 ```
-### Deploy
+### Deployment
 ```
 terraform plan  
 terraform apply

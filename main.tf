@@ -4,7 +4,7 @@ terraform {
   required_version = ">= 0.12.0"
 
   backend "s3" {
-    bucket = "obs-aan--terraform-backend"
+    bucket = "obs-terraform-backend"
     key    = "ecs-p2-terraform-plan--boot-from-volumes"
     region = "eu-west-0"
     endpoint = "https://oss.eu-west-0.prod-cloud-ocb.orange-business.com"

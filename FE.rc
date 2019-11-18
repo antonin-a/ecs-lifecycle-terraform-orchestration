@@ -19,15 +19,15 @@ export AUTH_URL=https://iam.eu-west-0.prod-cloud-ocb.orange-business.com/v3
 # With the addition of Keystone we have standardized on the term *tenant*
 # as the entity that owns the resources.
 
-export OS_USER_DOMAIN_NAME=OCB0001661
-export OS_PROJECT_NAME=eu-west-0_aan
+export OS_USER_DOMAIN_NAME=<YOUR-DOMAIN-NAME>
+export OS_PROJECT_NAME=<your-project-name>
 
 
 # In addition to the owning entity (tenant), OpenStack stores the entity
 # performing the action as the *user*.
 
-export OS_USERNAME="antonin.anchisi"
-export OS_ACCESS_KEY="0AQDBDRTTZCNO46XBY8R"
+export OS_USERNAME="<your-username>"
+export OS_ACCESS_KEY="<YOUR-ACCES-KEY>"
 echo "Please enter your Secret Key: "
 read -sr OS_SECRET_KEY_INPUT
 export OS_SECRET_KEY=$OS_SECRET_KEY_INPUT
