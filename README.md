@@ -1,7 +1,7 @@
 # ECS Lifecycle orchestration using Terraform
 ============================
 
-The goal of this project is to allow users to orchestrate their Flexible Engine Cloud ECS lifecylce using Terraform. This plan can be executed as a cron job in order to create/delete ECS automatically with persistent data/volumes.
+The goal of this project is to allow users to orchestrate their Flexible Engine Cloud ECS lifecycle using Terraform. This plan can be executed as a cron job in order to create/delete ECS automatically with persistent data/volumes.
 
 ## Requirements
 ------------
@@ -18,16 +18,6 @@ In order to create the instances, this plan require the following FE ressources:
 - An existing bootable system disk
 - An existing data disk (can be removed)
 
-## How to orchestrate existing ECS(s)
----------------------
-1. Stop the existing ECS(s)
-2. Detach system and data disk(s)
-3. Delete ECS(s)
-4. Add your system and data disks uuid to your .tfvars file
-  ```
-  system_disks = ["first-system-disk-id","second-system-disk-id","..."]
-  data_disks = ["irst-data-disk-id","second-data-disk-id","..."]
-  ```
 ## Quick Start
 ### Initialisation
 - Clone this repository
@@ -40,12 +30,26 @@ In order to create the instances, this plan require the following FE ressources:
 - Terraform Initialisation
   `terraform init`
 
-### Deployment
+### Lifecycle
+1. Creation:
   ```
   terraform plan  
   terraform apply
   ```
-
+2. Suppression
+  ```
+  terraform destroy
+  ```
+## How to orchestrate existing ECS(s)
+  ---------------------
+  1. Stop the existing ECS(s)
+  2. Detach system and data disk(s)
+  3. Delete ECS(s)
+  4. Add your system and data disks uuid to your .tfvars file
+    ```
+    system_disks = ["first-system-disk-id","second-system-disk-id","..."]
+    data_disks = ["irst-data-disk-id","second-data-disk-id","..."]
+    ```
 ### (Optional) Use Flexible Engine Object Storage (OBS) to store your .tfstafe files
   ```
   terraform {
