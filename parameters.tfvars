@@ -1,8 +1,10 @@
 key_pair          = "your-keypair"
+instance_name     = ""
 flavor_name       = "flavor-name"
 availability_zone = "eu-west-0a"
 network_id        = "your-network-id"
 subnet_id         = "your-subnet-id"
+fixed_ip          = ""
 security_groups   = ["your-sec-group-id"]
 system_disks      = "system-disk-id"
 data_disks        = "data-disk-id"

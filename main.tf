@@ -23,7 +23,7 @@ resource "flexibleengine_compute_instance_v2" "instance" {
   user_data         = var.user_data
 
   block_device {
-    uuid                  = var.instance.system_disk
+    uuid                  = var.system_disk
     source_type           = "volume"
     destination_type      = "volume"
     boot_index            = 0
@@ -31,7 +31,7 @@ resource "flexibleengine_compute_instance_v2" "instance" {
   }
 
   block_device {
-    uuid                  = var.instance.data_disk
+    uuid                  = var.data_disk
     source_type           = "volume"
     destination_type      = "volume"
     boot_index            = 1
@@ -51,7 +51,8 @@ resource "flexibleengine_networking_port_v2" "instance_port" {
   admin_state_up     = "true"
 
   fixed_ip {
-    subnet_id = var.fixed_ip
+    subnet_id        = var.subnet_id
+    ip_address       = var.fixed_ip
   }
 }
 

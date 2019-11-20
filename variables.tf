@@ -49,6 +49,11 @@ variable "network_id" {
   type        = string
 }
 
+variable "subnet_id" {
+  description = "The subnet ID to launch in"
+  type        = string
+}
+
 variable "fixed_ip" {
   description = "The fixed private IP to use"
   type        = string
