@@ -42,8 +42,8 @@ In order to create the instances, this plan require the following FE ressources:
   3. Delete ECS(s)
   4. Add your system and data disks uuid to your .tfvars file
   ```
-  system_disks = ["first-system-disk-id","second-system-disk-id","..."]
-  data_disks = ["irst-data-disk-id","second-data-disk-id","..."]
+  system_disk = "system-disk-id"
+  data_disk = "data-disk-id"
   ```
 ### (Optional) Use Flexible Engine Object Storage (OBS) to store your .tfstafe files
   ```

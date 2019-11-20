@@ -4,21 +4,21 @@ variable "instance_name" {
 }
 
 variable "instance_count" {
-  description = "(Required unless system_disks or data_disks are provided)  Number of instances to launch. "
+  description = "Number of instances to launch. "
   default     = 0
   type        = number
 }
 
-variable "system_disks" {
+variable "system_disk" {
   description = "System disks uuids"
-  type        = list(string)
-  default     = []
+  type        = string
+  default     = ""
 }
 
-variable "data_disks" {
+variable "data_disk" {
   description = "Data disks uuids"
-  type        = list(string)
-  default     = []
+  type        = string
+  default     = ""
 }
 
 variable "attach_eip" {
@@ -49,8 +49,8 @@ variable "network_id" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "The subnet ID to launch in"
+variable "fixed_ip" {
+  description = "The fixed private IP to use"
   type        = string
 }
 
