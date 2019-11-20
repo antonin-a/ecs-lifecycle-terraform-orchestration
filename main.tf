@@ -17,13 +17,13 @@ terraform {
 resource "flexibleengine_compute_instance_v2" "instance" {
   availability_zone = var.availability_zone
   count             = var.instance_count
-  name              = var.instance_name
+  name              = var.instance_name[terraform.workspace]
   flavor_name       = var.flavor_name
   key_pair          = var.key_pair
   user_data         = var.user_data
 
   block_device {
-    uuid                  = var.system_disk
+    uuid                  = var.system_disk[terraform.workspace]
     source_type           = "volume"
     destination_type      = "volume"
     boot_index            = 0
@@ -31,7 +31,7 @@ resource "flexibleengine_compute_instance_v2" "instance" {
   }
 
   block_device {
-    uuid                  = var.data_disk
+    uuid                  = var.data_disk[terraform.workspace]
     source_type           = "volume"
     destination_type      = "volume"
     boot_index            = 1
@@ -52,7 +52,7 @@ resource "flexibleengine_networking_port_v2" "instance_port" {
 
   fixed_ip {
     subnet_id        = var.subnet_id
-    ip_address       = var.fixed_ip
+    ip_address       = var.fixed_ip[terraform.workspace]
   }
 }
 

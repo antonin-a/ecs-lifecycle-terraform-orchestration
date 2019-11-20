@@ -1,24 +1,22 @@
 variable "instance_name" {
   description = "Name of the ECS instance and the associated volume"
-  type        = string
+  type        = map(string)
 }
 
 variable "instance_count" {
   description = "Number of instances to launch. "
-  default     = 0
+  default     = "1"
   type        = number
 }
 
 variable "system_disk" {
   description = "System disks uuids"
-  type        = string
-  default     = ""
+  type        = map(string)
 }
 
 variable "data_disk" {
   description = "Data disks uuids"
-  type        = string
-  default     = ""
+  type        = map(string)
 }
 
 variable "attach_eip" {
@@ -56,7 +54,7 @@ variable "subnet_id" {
 
 variable "fixed_ip" {
   description = "The fixed private IP to use"
-  type        = string
+  type        = map(string)
 }
 
 variable "security_groups" {
