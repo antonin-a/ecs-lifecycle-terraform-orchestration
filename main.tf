@@ -13,7 +13,7 @@ terraform {
   }
 }
 
-resource "flexibleengine_compute_instance_v2" "instance-from-image" {
+/*resource "flexibleengine_compute_instance_v2" "instance-from-image" {
   availability_zone = var.availability_zone
   //If there is no existing system EVS provided (.tfvars system_disks), set count to instance_count value. Else, do not create this ressource (count=0)
   count             = length(var.system_disks) == 0 ? var.instance_count : 0
@@ -48,7 +48,7 @@ resource "flexibleengine_compute_instance_v2" "instance-from-image" {
     port           = flexibleengine_networking_port_v2.instance_port[count.index].id
     access_network = true
   }
-}
+}*/
 
 resource "flexibleengine_compute_instance_v2" "instance" {
   availability_zone = var.availability_zone

@@ -12,11 +12,13 @@ variable "instance_count" {
 variable "system_disks" {
   description = "System disks uuids"
   type        = list(string)
+  default     = []
 }
 
 variable "data_disks" {
   description = "Data disks uuids"
   type        = list(string)
+  default     = []
 }
 
 variable "attach_eip" {
@@ -34,7 +36,7 @@ variable "ext_net_name" {
 variable "image_id" {
   description = "ID of Image to use for the instance"
   type        = string
-  default     = ""
+  default     = "0249222b-c9be-419b-a953-f47e91c3fc81" //Ubuntu 18.04 ID
 }
 
 variable "flavor_name" {
