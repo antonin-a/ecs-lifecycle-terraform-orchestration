@@ -13,10 +13,46 @@ terraform {
   }
 }
 
+resource "flexibleengine_compute_instance_v2" "instance-from-image" {
+  availability_zone = var.availability_zone
+  //If there is no existing system EVS provided (.tfvars system_disks), set count to instance_count value. Else, do not create this ressource (count=0)
+  count             = length(var.system_disks) == 0 ? var.instance_count : 0
+  name              = var.instance_count > 1 ? format("%s-%d", var.instance_name, count.index + 1) : var.instance_name
+  flavor_name       = var.flavor_name
+  key_pair          = var.key_pair
+  user_data         = var.user_data
+
+  block_device {
+    //Block device based on an existing IMS image
+    uuid                  = var.image_id
+    source_type           = "image"
+    volume_size           = 70
+    boot_index            = 0
+    destination_type      = "volume"
+    delete_on_termination = false
+    volume_type           = "SATA"
+  }
+
+  block_device {
+    //Block device based on existing data EVS provided on .tfvars data_disks
+    uuid                  = var.data_disks[count.index]
+    source_type           = "volume"
+    destination_type      = "volume"
+    boot_index            = 1
+    delete_on_termination = false
+  }
+
+  //If using ECS with local storage, remember to add another block device as documented here : https://www.terraform.io/docs/providers/flexibleengine/r/compute_instance_v2.html#instance-with-multiple-ephemeral-disks
+
+  network {
+    port           = flexibleengine_networking_port_v2.instance_port[count.index].id
+    access_network = true
+  }
+}
 
 resource "flexibleengine_compute_instance_v2" "instance" {
   availability_zone = var.availability_zone
-  count             = length(var.system_disks)
+  count             = length(var.system_disks) > 0 ? length(var.system_disks) : 0
   name              = length(var.system_disks) > 1 ? format("%s-%d", var.instance_name, count.index + 1) : var.instance_name
   flavor_name       = var.flavor_name
   key_pair          = var.key_pair

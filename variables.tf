@@ -3,11 +3,21 @@ variable "instance_name" {
   type        = string
 }
 
-/*variable "instance_count" {
-  description = "Number of instances to launch"
-  default     = 1
+variable "instance_count" {
+  description = "(Required unless system_disks or data_disks are provided)  Number of instances to launch. "
+  default     = 0
   type        = number
-}*/
+}
+
+variable "system_disks" {
+  description = "System disks uuids"
+  type        = list(string)
+}
+
+variable "data_disks" {
+  description = "Data disks uuids"
+  type        = list(string)
+}
 
 variable "attach_eip" {
   description = "Whether or not attache elastic IP (public IP)"
@@ -21,10 +31,11 @@ variable "ext_net_name" {
   type        = string
 }
 
-/*variable "image_id" {
+variable "image_id" {
   description = "ID of Image to use for the instance"
   type        = string
-}*/
+  default     = ""
+}
 
 variable "flavor_name" {
   description = "The flavor type of instance to start"
@@ -84,14 +95,4 @@ variable "region" {
   description = "Region of the Flexible Engine provider"
   type        = string
   default     = "eu-west-0"
-}
-
-variable "system_disks" {
-  description = "System disks uuids"
-  type        = list(string)
-}
-
-variable "data_disks" {
-  description = "Data disks uuids"
-  type        = list(string)
 }

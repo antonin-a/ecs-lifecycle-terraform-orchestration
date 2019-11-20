@@ -37,7 +37,7 @@ export AWS_ACCESS_KEY_ID="${OS_ACCESS_KEY}"
 export AWS_SECRET_ACCESS_KEY="${OS_SECRET_KEY}"
 
 # With Keystone you pass the keystone password.
-echo "Please enter your OpenStack Password: "
+echo "Please enter your Flexible Engine API Password: "
 read -sr OS_PASSWORD_INPUT
 export OS_PASSWORD=$OS_PASSWORD_INPUT
 export OS_IDENTITY_API_VERSION=3
