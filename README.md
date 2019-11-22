@@ -97,5 +97,5 @@ fixed_ip          =  ({
   ```
 
 ## Limitations
-- ECS creation should be perform on the same AZ as existing EVS (you can't create an ECS on AZa with EVS on AZb)
-- Data disk are not automatically mounted at OS level (WIP)
+- ECS creation should be performed on the same AZ as existing EVS (you can't create an ECS on AZa with EVS on AZb)
+- Data disk are not automatically mounted at OS (you can use a user-data script)

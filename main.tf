@@ -13,11 +13,11 @@ terraform {
   }*/
 }
 
-// Instance ressource block
+// Instance ressource block_device
 resource "flexibleengine_compute_instance_v2" "instance" {
   availability_zone = var.availability_zone
   count             = var.instance_count
-  name              = var.instance_name[terraform.workspace]
+  name              = var.instance_name[terraform.w
   flavor_name       = var.flavor_name
   key_pair          = var.key_pair
   user_data         = var.user_data
