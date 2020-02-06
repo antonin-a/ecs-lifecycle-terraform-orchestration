@@ -33,8 +33,8 @@ terraform workspace new prod
 ```
 instance_name     = ({
                     dev         = "ecs-dev"
-                    staging     = "staging-dev"
-                    prod        = "prod-dev"
+                    staging     = "ecs-staging"
+                    prod        = "ecs-prod"
                   })
 system_disk       =  ({
                     dev         = "system_disk-id-dev"
